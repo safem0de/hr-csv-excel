@@ -2,6 +2,10 @@ import pandas as pd
 from openpyxl import load_workbook
 from pathlib import Path
 import json
+from datetime import datetime
+
+now = datetime.now()
+timestamp_str = now.strftime("%d-%m-%Y_%H%M%S")
 
 # โหลด config.json
 with open("config.json", encoding="utf-8") as f:
@@ -50,6 +54,15 @@ for i, name in enumerate(candidate):
             new_sheet[to_cell] = value
         else:
             print(f"Warning: Column '{from_column}' not found in CSV")
+    
+    # ใส่คะแนนประเมิน (✓ ลง cell)
+    for topic, mapping in config["scoring"].items():
+        score_str = str(row_data.get(mapping["from"], "")).strip()
+        row = mapping["row"]
+        if score_str in config["data_point"]:
+            col_letter = config["data_point"][score_str]["column"]
+            cell = f"{col_letter}{row}"
+            new_sheet[cell] = "✓"
 
 # บันทึกไฟล์
-wb.save("interview_filled.xlsx")
+wb.save(f"{timestamp_str}_interview_filled.xlsx")
