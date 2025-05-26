@@ -6,3 +6,8 @@ pyvenv.cfg
 *.xlsx
 !interview_data.csv
 !interview_format.xlsx
+
+__pycache__
+build
+dist
+*.spec

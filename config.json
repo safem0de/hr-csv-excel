@@ -1,6 +1,6 @@
 {
-  "csv_path": "D:/Python Projects/hr-csv-excel/interview_data.csv",
-  "excel_path": "D:/Python Projects/hr-csv-excel/interview_format.xlsx",
+  "csv_path": "D:/My_Projects/hr-csv-excel/interview_data.csv",
+  "excel_path": "D:/My_Projects/hr-csv-excel/interview_format.xlsx",
   "create_sheetname": {
     "from_column": "ชื่อผู้สมัคร"
   },

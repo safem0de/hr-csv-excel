@@ -1,6 +1,8 @@
 import sys
 import os
 import json
+
+from GenExcel import GenExcel
 from PyQt6.QtWidgets import (
     QApplication, QWidget, QVBoxLayout, QLabel,
     QPushButton, QFileDialog, QMessageBox
@@ -99,7 +101,17 @@ class CSVExcelApp(QWidget):
             QMessageBox.warning(self, "ผิดพลาด", "กรุณาเลือกไฟล์ Excel ที่ถูกต้องก่อน")
             return
 
-        QMessageBox.information(self, "สำเร็จ", "สร้าง Excel สำเร็จแล้ว (เชื่อม logic ได้ต่อ)")
+        try:
+            # ✅ สร้าง instance ของ GenExcel
+            generator = GenExcel(self.csv_path, self.excel_path, self.config_path)
+            output_file = generator.generateExcel()  # ✅ เรียกใช้งาน
+
+            QMessageBox.information(
+                self, "สำเร็จ", f"สร้าง Excel สำเร็จแล้ว:\n{output_file}"
+            )
+
+        except Exception as e:
+            QMessageBox.critical(self, "เกิดข้อผิดพลาด", str(e))
 
 if __name__ == "__main__":
     app = QApplication(sys.argv)
