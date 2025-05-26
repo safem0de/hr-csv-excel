@@ -1,1 +1,12 @@
+et_xmlfile
+numpy
+openpyxl
+pandas
 PyQt6
+PyQt6-Qt6
+PyQt6_sip
+python-dateutil
+pytz
+six
+tzdata
+xlrd

@@ -2,3 +2,7 @@ Include
 Lib
 Scripts
 pyvenv.cfg
+
+*.xlsx
+!interview_data.csv
+!interview_format.xlsx
